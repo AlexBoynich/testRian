@@ -12,7 +12,7 @@
         <input type="number" v-model="prod.price" placeholder="Цена">
         <input type="text" v-model="prod.title" placeholder="Заголовок">
         <input type="number" v-model="prod.rating.rate" placeholder="Рейтинг">
-        <input type="number" v-model="prod.rating.count"placeholder="Количество продукта">
+        <input type="number" v-model="prod.rating.count" placeholder="Количество продукта">
         <button
         @click="addProduct()"
             class="button">Добавить</button>
@@ -42,36 +42,24 @@ export default {
     },
     methods: {
         addProduct() {
-            this.$emit('addProduct',this.prod )
+            this.$emit('addProduct',this.prod );
+            
         }
     },
     computed: {
-        setCategory() {
-            return this.prod.category = (this.currentProduct) ? this.currentProduct.category : ''
-        },
-        setDescription() {
-            return this.prod.description = (this.currentProduct) ? this.currentProduct.description : ''
-        },
-        setImage() {
-            return this.prod.image = (this.currentProduct) ? this.currentProduct.image : ''
-        },
-        setPrice() {
-            return this.prod.price = (this.currentProduct) ? this.currentProduct.price : null
-        },
-        setTitle() {
-            return this.prod.title = (this.currentProduct) ? this.currentProduct.title : ''
-        },
-        setRate() {
-            return this.prod.rating.rate = (this.currentProduct) ? this.currentProduct.rating.rate : null
-        },
-        setCount() {
-            return this.prod.rating.count = (this.currentProduct) ? this.currentProduct.rating.count : null
-        },
-        setId() {
-            return this.prod.id = (this.currentProduct) ? this.currentProduct.id : null
-        }
+
     },
-    props: ['currentProduct']
+    props: ['currentProduct'],
+    mounted (){
+        this.prod.category = (this.currentProduct) ? this.currentProduct.category : '';
+        this.prod.description = (this.currentProduct) ? this.currentProduct.description : '';
+        this.prod.image = (this.currentProduct) ? this.currentProduct.image : '';
+        this.prod.price = (this.currentProduct) ? this.currentProduct.price : null;
+        this.prod.title = (this.currentProduct) ? this.currentProduct.title : '';
+        this.prod.rating.rate = (this.currentProduct) ? this.currentProduct.rating.rate : null;
+        this.prod.rating.count = (this.currentProduct) ? this.currentProduct.rating.count : null;
+        this.prod.id = (this.currentProduct) ? this.currentProduct.id : null
+    }
 
 }
 </script>
